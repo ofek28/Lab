@@ -1,4 +1,3 @@
-import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { fetchQuote, fetchFinancials, fetchHistorical } from '@/lib/yahoo/client'
 import { QuoteHeader } from '@/components/analysis/QuoteHeader'
@@ -61,7 +60,19 @@ export default async function StockPage({ params }: Props) {
     ])
 
   if (quoteResult.status === 'rejected') {
-    notFound()
+    return (
+      <div className="mx-auto max-w-2xl px-6 py-20 text-center">
+        <div className="mb-3 text-4xl">⚠️</div>
+        <h1 className="mb-2 text-xl font-bold text-slate-800">Ticker not found: {ticker}</h1>
+        <p className="mb-6 text-sm text-slate-500">
+          Make sure the ticker symbol is correct and try again.
+          Yahoo Finance may also be temporarily unavailable.
+        </p>
+        <a href="/analyze" className="rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-700">
+          Back to search
+        </a>
+      </div>
+    )
   }
 
   const quote = quoteResult.value

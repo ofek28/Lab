@@ -9,12 +9,7 @@ import type { StockQuote, FinancialData, FinancialMetrics, IncomeStatement, Pric
 // Quote
 // -------------------------------------------------------
 export async function fetchQuote(ticker: string): Promise<StockQuote> {
-  const [quote, summary] = await Promise.all([
-    yahooFinance.quote(ticker),
-    yahooFinance.quoteSummary(ticker, {
-      modules: ['price', 'summaryDetail'],
-    }).catch(() => null),
-  ])
+  const quote = await yahooFinance.quote(ticker, {}, { validateResult: false })
 
   return {
     ticker: quote.symbol,
@@ -47,7 +42,7 @@ export async function fetchFinancials(ticker: string): Promise<FinancialData> {
       'incomeStatementHistory',
       'earningsTrend',
     ],
-  })
+  }, { validateResult: false })
 
   const fd = summary.financialData
   const ks = summary.defaultKeyStatistics
@@ -143,7 +138,7 @@ export async function fetchHistorical(
   const results = await yahooFinance.historical(ticker, {
     period1,
     interval: period === '2y' ? '1wk' : '1d',
-  })
+  }, { validateResult: false })
 
   return results.map((bar) => ({
     date: bar.date.toISOString().split('T')[0],
