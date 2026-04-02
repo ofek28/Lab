@@ -4,13 +4,6 @@
 import yahooFinance from 'yahoo-finance2'
 import type { StockQuote, FinancialData, FinancialMetrics, IncomeStatement, PriceBar, SearchResult } from '@/types/stock'
 
-// Suppress yahoo-finance2 validation warnings in production
-yahooFinance.setGlobalConfig({
-  validation: {
-    logErrors: process.env.NODE_ENV === 'development',
-    logOptionsErrors: process.env.NODE_ENV === 'development',
-  },
-})
 
 // -------------------------------------------------------
 // Quote
