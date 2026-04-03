@@ -5,6 +5,7 @@ import { QuoteHeader } from '@/components/analysis/QuoteHeader'
 import { PriceChart } from '@/components/analysis/PriceChart'
 import { FundamentalsCard } from '@/components/analysis/FundamentalsCard'
 import { AgentReport } from '@/components/analysis/AgentReport'
+import { MontBlancWidget } from '@/components/analysis/MontBlancWidget'
 import { TickerSearch } from '@/components/analysis/TickerSearch'
 import { BookOpen, ExternalLink } from 'lucide-react'
 import { createServerClient } from '@/lib/supabase/server'
@@ -123,8 +124,18 @@ export default async function StockPage({ params }: Props) {
           )}
         </div>
 
-        {/* Right column: AI analysis */}
-        <div className="xl:col-span-1">
+        {/* Right column: Mont Blanc + AI analysis */}
+        <div className="space-y-5 xl:col-span-1">
+          {/* Mont Blanc Model */}
+          {financials ? (
+            <MontBlancWidget
+              financials={financials}
+              currentPrice={quote.price}
+              ticker={ticker}
+            />
+          ) : null}
+
+          {/* AI Agent Analysis */}
           <AgentReport ticker={ticker} initialReport={report} />
         </div>
       </div>

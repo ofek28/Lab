@@ -1,20 +1,11 @@
 import type { ScoringModel, ModelResult } from './types'
 import { grahamNumberModel } from './grahamNumber'
+import { montBlancModel } from './montBlanc'
 import type { FinancialData, PriceBar } from '@/types/stock'
 
-// ============================================================
-// Model Registry
-// To add a new model:
-// 1. Create src/lib/models/yourModel.ts implementing ScoringModel
-// 2. Import it here and add to MODEL_REGISTRY
-// ============================================================
-
 export const MODEL_REGISTRY: ScoringModel[] = [
+  montBlancModel,
   grahamNumberModel,
-  // Add more models here, e.g.:
-  // dcfModel,
-  // magicFormulaModel,
-  // piotroskiScoreModel,
 ]
 
 export function runAllModels(
