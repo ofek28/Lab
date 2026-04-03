@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { fetchQuote } from '@/lib/yahoo/client'
+import { fetchQuote } from '@/lib/finnhub/client'
 
 export async function GET(
   _request: NextRequest,

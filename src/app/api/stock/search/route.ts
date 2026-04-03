@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { searchTickers } from '@/lib/yahoo/client'
+import { searchTickers } from '@/lib/finnhub/client'
 
 export async function GET(request: NextRequest) {
   const query = request.nextUrl.searchParams.get('q') ?? ''

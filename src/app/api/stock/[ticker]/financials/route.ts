@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { fetchFinancials } from '@/lib/yahoo/client'
+import { fetchFinancials } from '@/lib/finnhub/client'
 
 export async function GET(
   _request: NextRequest,

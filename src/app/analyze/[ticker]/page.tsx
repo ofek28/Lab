@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { fetchQuote, fetchFinancials, fetchHistorical } from '@/lib/yahoo/client'
+import { fetchQuote, fetchFinancials } from '@/lib/finnhub/client'
+import { fetchHistorical } from '@/lib/yahoo/client'
 import { QuoteHeader } from '@/components/analysis/QuoteHeader'
 import { PriceChart } from '@/components/analysis/PriceChart'
 import { FundamentalsCard } from '@/components/analysis/FundamentalsCard'

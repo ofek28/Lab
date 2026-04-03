@@ -1,5 +1,6 @@
 import Anthropic from '@anthropic-ai/sdk'
-import { fetchQuote, fetchFinancials, fetchHistorical, fetchNewsHeadlines } from '@/lib/yahoo/client'
+import { fetchQuote, fetchFinancials, fetchNewsHeadlines } from '@/lib/finnhub/client'
+import { fetchHistorical } from '@/lib/yahoo/client'
 import { fundamentalAgent } from './fundamentalAgent'
 import { technicalAgent } from './technicalAgent'
 import { newsAgent } from './newsAgent'
